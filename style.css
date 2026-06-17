@@ -1,0 +1,1092 @@
+/* =======================================================================================
+  [PRODUCTION LAYER] GLOBAL STRUCTURAL STYLESHEET (style.css)
+  SYSTEM LOGIC: Directs responsive grids layouts, fluid structural transitions,
+  and explicit conditional breakpoints targeted for both desktop viewports and mobile agents.
+  =======================================================================================
+*/
+
+/* 🟢 SMOOTH SCROLLING UX ENGINE */
+html {
+  scroll-behavior: smooth;
+}
+
+/*
+1. html { ... }
+html: Yeh tumhari puri website ka sabse upar wala "Parent" tag hai. Isme jo bhi likhoge, wo puri website par apply hoga.
+{ } (Curly Braces): CSS mein iska matlab hota hai "Is tag ke liye ye rules lagao." Iske andar jo bhi likhte hain, wo is tag ke Properties hote hain.
+
+2. scroll-behavior
+scroll: Iska matlab hai page ko upar-neeche karna.
+behavior: Iska matlab hai "kaise" (tareeka).
+Ek saath: Browser ko bata raha hai ki scrolling ka tareeka kaisa hona chahiye.
+
+3. : smooth
+smooth: Yeh ek "Value" hai. Yeh batati hai ki behavior kaisa hoga—"Aaram se" (smoothly).
+
+--- FULL EXPLANATION & LOGIC ---
+html selector kyun?
+  Browser ka ek default behavior hota hai — jab tum kisi anchor link (#section jaise) par click karte ho, toh page JHATKE SE us jagah jump kar deta hai. html selector puri document ki "root" hai, isliye yahan likha scroll-behavior apply hota hai POORI WEBSITE par — har ek scroll par, har ek anchor link par.
+
+scroll-behavior: smooth kyun yahan aaya?
+  Isko hum ne 'html' par isliye likha kyunki niche wala '*' selector margin/padding reset karta hai, html root-level page behavior set karta hai. Dono ka kaam alag hai.
+
+smooth value ka actual kaam:
+  Jab user "Features" ya "Pricing" section ke link par click kare, toh page smoothly scroll kare, na ki teleport jaise jump kare. Yeh UX (User Experience) ke liye hai — website professional lagti hai.
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/*
+--- FULL EXPLANATION & LOGIC ---
+'*' (Star / Universal Selector) kyun aaya SABSE PEHLE?
+  Browser ek default "User Agent Stylesheet" apply karta hai — matlab har browser apni marzi se h1, p, body ko margin/padding deta hai. Agar hum reset nahi karte, toh Chrome mein site alag dikhegi, Firefox mein alag. Isliye '*' se sabse pehle SAARI default styling hatai jaati hai — taaki hum khud se ek consistent base banayein.
+
+margin: 0 aur padding: 0 — DONO EK SAATH kyun?
+  Margin = element ke BAHAR ki space (doosre elements se door rakhhna).
+  Padding = element ke ANDAR ki space (content ko border se door rakhhna).
+  Dono browser ke default se milte hain — isliye dono ko ek saath zero karna padta hai.
+
+box-sizing: border-box — SABSE IMPORTANT, kyun?
+  Default mein browser "content-box" use karta hai — iska matlab: agar kisi div ko width: 200px do aur padding: 20px do, toh div ACTUALLY 240px ki ho jaayegi. Layout toot jaata hai. border-box set karne se padding ANDAR COUNT hoti hai — 200px ki div 200px hi rahegi. Yeh ek GLOBAL fix hai isliye '*' par hai.
+
+font-family: "Poppins", sans-serif — SABSE AAKHIR kyun?
+  Yeh ek "Default Font" set kar raha hai poori website ke liye. '*' par ek baar set karo — sab inherit kar lete hain.
+*/
+
+header {
+  background-color: #f8fafc;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  position: relative; /* SYSTEM LOGIC: Mobile layer positioning ke liye zaroori hai */
+}
+
+/*
+1. background-color: #f8fafc;
+background-color: Yeh CSS ka ek basic rule hai jo kisi bhi dabbe ya section ke piche ka rang (background) badalta hai.
+#f8fafc: Yeh ek Hex Code hai. Yeh ekdum light grey/white color hota hai.
+
+2. padding: 15px 5%;
+padding: Iska matlab hai andar ki khali jagah.
+15px: Upar aur Neeche (Top & Bottom) ke liye hai.
+5%: Left aur Right ke liye hai.
+
+3. display: flex;
+flex (Flexible Box): Isko lagate hi header ke andar jo bhi cheezein hain woh ek sidhi line (row) mein aa jaati hain.
+
+4. justify-content: space-between;
+space-between: Iska matlab hai "beech mein saari jagah chhod do". Logo left kone mein aur Menu right kone mein.
+
+5. align-items: center;
+center: Iska matlab hai ekdum beech mein. Dono upar-neeche se barabar center mein dikhenge.
+
+6. border-bottom: 1px solid #e2e8f0;
+border-bottom: Sirf neeche ki taraf ek line (border) banani hai.
+
+7. position: relative;
+relative: Iska matlab hai "Apni asli jagah par hi raho". Yeh apne andar ke elements ke liye ek "Anchor" (baba/head) ban jata hai.
+
+--- FULL EXPLANATION & LOGIC ---
+background-color: #f8fafc kyun?
+  Pure white (#ffffff) eyes par strain deta hai. #f8fafc ek off-white hai — premium feel deta hai. Neeche border-bottom ke saath milke yeh header ko body se visually alag karta hai.
+
+display: flex — Yahan kyun zaroori tha?
+  Header ke andar 3 cheezein hain: Logo, Nav links, CTA Button. Default HTML mein yeh teeno "block elements" ki tarah EK KE NEECHE EK stack hote. flex lagane se woh SIDE BY SIDE aa gaye.
+
+position: relative — SABSE MISUNDERSTOOD property
+  Kyunki mobile mein burger menu khulne par jo nav dropdown aata hai, uski CSS mein likha hai: `position: absolute; top: 100%; left: 0;`
+  "absolute" hamesha apne NEAREST "relative" parent ko dhundhhta hai. Agar header mein relative na hota, toh dropdown PURI WINDOW ke relative position leta. Yeh explicitly isliye likha gaya ki nav ka dropdown sahi jagah — header ke neeche — aaye.
+*/
+
+.burger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0f172a;
+}
+/*
+cursor: pointer;
+cursor: Jab tum mouse ka teer (arrow) is button ke upar le jaoge, toh woh teer kaisa dikhega.
+pointer: Iska matlab hai "Hath ka nishan" (☝️).
+
+--- FULL EXPLANATION & LOGIC ---
+display: none — SABSE IMPORTANT
+  Yeh burger button BY DEFAULT CHUPA HUA hai — desktop par dikhta hi nahi. Kyunki desktop par poori nav ul visible hai — links dikhte hain. Burger icon ka kaam sirf MOBILE PAR hota hai.
+
+font-size: 28px — Icon ka size kyun?
+  Burger icon (☰) ek text character hai, image nahi. font-size se uska size control hota hai — isliye 28px diya, taaki finger se aasani se tap kiya ja sake mobile par.
+
+background: none + border: none — Kyun dono?
+  Browser AUTOMATICALLY <button> tag ko ek box jaise dikhata hai. Yeh default styling hatane ke liye dono explicitly "none" kiye gaye hain.
+*/
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #2563eb;
+  text-decoration: none;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+.logo kyun class hai, tag nahi?
+  Logo har website mein different hota hai. Isliye specific class lagayi taaki HTML structure change ho to CSS nahi todna pade.
+
+font-size: 22px + font-weight: bold — Dono saath kyun?
+  Size se logo BAD dikhta hai. Bold se uska visual WEIGHT badhta hai — logo anchor point jaisa lagta hai.
+
+color: #2563eb — Brand color kyun?
+  Yeh wohi blue hai jo btn-primary, hover, pricing card border — sab jagah use hua hai. Consistency.
+
+text-decoration: none — Kyun?
+  <a> tag par browser by default blue underline deta hai. text-decoration: none se woh underline hatayi gayi.
+*/
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+/*
+list-style: none: Iska matlab hai "Kuch nahi, bilkul saaf". List ke aage ki nishaniyan hata deta hai.
+
+--- FULL EXPLANATION & LOGIC ---
+nav ul kyun? nav ya ul alag kyun nahi?
+  nav ul = "Nav ke ANDAR wali UL ko target karo." Agar sirf ul likhte, toh page ki SAARI lists affect hoti.
+
+display: flex — Kyun?
+  <li> elements by default "block" hote hain. flex lagane se woh horizontal row mein aa jaate hain.
+
+gap: 25px — margin nahi, gap kyun?
+  gap sirf FLEX items ke beech kaam karta hai. gap cleaner aur predictable hai.
+*/
+
+nav ul li a {
+  text-decoration: none;
+  color: #334155;
+  font-weight: 500;
+}
+/*
+font-weight: 500: 500 ka matlab hai "Medium" (thoda sa normal se zyada gadha).
+
+--- FULL EXPLANATION & LOGIC ---
+nav ul li a — Itna LAMBA selector kyun?
+  Yeh "Descendant Selector Chain" hai. Itna specific isliye likha kyunki agar sirf 'a' likhte, toh footer ke links bhi affect hote. Yeh SIRF nav ke links ko target karta hai.
+
+color: #334155 — Kyun yeh blue nahi?
+  Default state mein dark grey diya — taaki links readable hon lekin loud na laggein. Hover par color change ho to contrast clearly feel ho.
+*/
+
+nav ul li a:hover {
+  color: #2563eb;
+}
+/*
+:hover: Yeh ek Pseudo-class hai. Iska matlab hai "jab mouse iske upar hover (tairna) kare".
+
+--- FULL EXPLANATION & LOGIC ---
+:hover pseudo-class kyun?
+  Yeh CONDITIONAL hai — hamesha nahi, SIRF jab mouse aaye tab.
+
+color: #2563eb — Yeh BRAND COLOR kyun?
+  Default grey tha, hover par blue aaya — contrast se user ko FEEDBACK milta hai ki "haan, yeh hover ho raha hai."
+*/
+
+.cta-btn {
+  background-color: #2563eb;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+}
+/*
+text-decoration: none: Iska matlab hai "Kuch nahi" ya "Hata do". Underline hata deta hai.
+
+--- FULL EXPLANATION & LOGIC ---
+.cta-btn vs .btn-primary — Do alag classes kyun?
+  CTA = "Call To Action" — header mein chota sa button. .btn-primary = Hero section ka bada main button. Dono blue hain lekin SIZE alag hai.
+
+background-color: #2563eb + color: white — Contrast kyun zaroori?
+  Blue background par white text = high contrast = readable.
+
+font-weight: 600 — nav links pe 500 tha, yahan 600 kyun?
+  CTA button important action hai. Thoda aur bold = more prominent.
+*/
+
+/*
+  =========================================
+  [VIEWPORT ROW 2] GLOBAL HERO BANNER LAYOUT
+  =========================================
+*/
+.hero {
+  background-color: #f8fafc;
+  min-height: 80vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 10%;
+}
+/*
+justify-content: space-between: Iska matlab hai "pehle aur aakhri item ko kone par chipka do, aur beech ki bachi hui saari jagah ko baaki items ke beech mein barabar baant do."
+
+--- FULL EXPLANATION & LOGIC ---
+min-height: 80vh — height: 80vh kyun nahi?
+  vh = "Viewport Height". min-height kehti hai "LEAST 80vh rakho, content zyada ho toh badh jaao" — flexible hai.
+
+display: flex — Kyun hero mein?
+  Hero ke andar 2 cheezein hain: text aur image. flex se dono SIDE BY SIDE aa jaate hain.
+
+padding: 50px 10% — Header 5% tha, Hero 10% kyun?
+  Hero = main content area — zyada breathing space chahiye. 10% left/right deta hai taaki text line too long na ho readability ke liye.
+*/
+
+.hero-content {
+  max-width: 50%;
+}
+/*
+max-width: Iska matlab hai "Maximum Width" (Isse zyada chouda nahi ho sakta).
+50%: uski choudaai apne parent container ki poori width ka aadha (half) hogi.
+
+--- FULL EXPLANATION & LOGIC ---
+max-width: 50% — Width: 50% kyun nahi?
+  width: 50% hamesha 50% hogi. max-width: 50% kehta hai "50% se ZYADA mat ho, lekin agar content kam hai toh chhhota bhi ho sakta hai."
+  .hero-image bhi 45% max-width le raha hai. 50% + 45% = 95% — 5% ka gap beech mein rehta hai.
+*/
+
+.hero-content h1 {
+  font-size: 42px;
+  color: #0f172a;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+/*
+Tumne computer ko bola: "Bhai, agar meri heading do lines mein toot rahi hai, toh un dono lines ke beech ka gap 1.2 rakhna. Aur heading ke baad 20px ka gap dena."
+
+--- FULL EXPLANATION & LOGIC ---
+font-size: 42px — Kyun itna bada?
+  H1 page ka MOST IMPORTANT heading hota hai — SEO aur visual hierarchy ke liye.
+
+line-height: 1.2 — 1.2 kyun 1.5 ya 1.6 nahi?
+  Heading badi hoti hai, zyada spacing weird lagti hai. 1.2 = heading ke letters ke beech tight spacing.
+*/
+
+.hero-content h1 span {
+  color: #2563eb;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+span kyun use kiya?
+  <span> ek "inline" element hai — ussi line mein rehta hai. HTML mein heading ke KUCH WORDS ko wrap karne ke liye span use karte hain taaki unka color change ho sake.
+*/
+
+.hero-content p {
+  font-size: 16px;
+  color: #475569;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+color: #475569 — H1 (#0f172a) se lighter kyun?
+  Visual hierarchy: H1 (darkest, most important) → p (lighter, secondary).
+
+margin-bottom: 30px — H1 mein 20px tha, yahan 30px kyun?
+  Paragraph ke baad BUTTONS aate hain — unhe zyada gap chahiye.
+*/
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+}
+/*
+Tumne computer ko command di: "Bhai, jo mere Hero section ke buttons hain, unhe ek seedhi line mein side-by-side kar do (display: flex) aur dono ke beech mein 15 pixels ka gap rakhna."
+
+--- FULL EXPLANATION & LOGIC ---
+.hero-buttons wrapper kyun?
+  Do alag buttons hain. Inhe WRAP karna zaroori tha taaki dono ko ek saath control kar sakein.
+*/
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+/*
+1. box-shadow: Parchhai (shadow) tayaar karo.
+2. 0: Horizontal shadow.
+3. 4px: Vertical shadow (neeche ki taraf).
+4. 6px: Blur Radius (dhundhlapan).
+5. -1px: Spread Radius (parchhai ka phailao).
+6. rgba(37, 99, 235, 0.2): Rang aur Transparency (halki blue shadow).
+
+--- FULL EXPLANATION & LOGIC ---
+box-shadow detail: rgba mein 37, 99, 235 = #2563eb (button ka apna blue color). Black shadow nahi — SAME COLOR ki halki shadow — yeh "colored shadow" trick premium buttons mein use hoti hai.
+*/
+
+.btn-secondary {
+  background-color: transparent;
+  color: #2563eb;
+  padding: 12px 28px;
+  border: 2px solid #2563eb;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+background-color: transparent — Kyun?
+  "Ghost button" / "Outline button" pattern. Primary button filled hai (main action), secondary outline (alternative action).
+
+border: 2px solid #2563eb — 1px nahi, 2px kyun?
+  1px bahut patli — ghost button weak lagta. 2px se outline button ka weight primary button se match karta hai visually.
+*/
+
+.hero-image {
+  max-width: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+max-width: 45% + width: 100% — Dono saath kyun?
+  max-width: 45% → Hero ke space ka maximum 45% lo.
+  width: 100% → Us 45% space mein poora fill ho jaao.
+
+display: flex + justify-content: center — Kyun?
+  .image-placeholder ko CENTER karna hai .hero-image ke andar.
+*/
+
+.image-placeholder {
+  width: 100%;
+  height: 350px;
+  background-color: #cbd5e1;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #475569;
+  font-weight: bold;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+Placeholder kyun?
+  Real project mein yahan actual image hogi. Development mein ek colored box (placeholder) lagaate hain taaki layout samajh aa sake.
+
+border-radius: 12px — Kyun itna zyada?
+  Badi element = zyada rounded = friendly, modern feel.
+*/
+
+/* =========================================
+  [VIEWPORT ROW 3] PLATFORM MODULAR FEATURES MATRIX
+  =========================================
+*/
+.features {
+  background-color: #ffffff;
+  padding: 80px 10%;
+  text-align: center;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+background-color: #ffffff — Hero (#f8fafc) se alag kyun?
+  VISUAL SEPARATION technique — Sections alternate karte hain: Header (#f8fafc) → Hero (#f8fafc) → Features (#ffffff). Off-white aur pure white ka alternation sections ko divide karta hai.
+
+padding: 80px 10% — Hero mein 50px tha, yahan 80px kyun?
+  Features section mein GRID of cards hai — breathing space zyada chahiye.
+*/
+
+.features h2 {
+  font-size: 32px;
+  color: #0f172a;
+  margin-bottom: 40px;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+font-size: 32px — H1 (42px) tha, yahan 32px kyun?
+  Typography hierarchy: H1 (hero) > H2 (section headings).
+
+margin-bottom: 40px — Kyun itna zyada?
+  H2 ke baad features ka GRID aata hai. 40px ek clear visual gap deta hai.
+*/
+
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 25px;
+}
+/*
+flex-wrap: Yeh browser ko batata hai ki agar content jagah se bahar ja raha hai, toh kya karna hai.
+wrap: "Nayi line par bhej do".
+
+--- FULL EXPLANATION & LOGIC ---
+flex-wrap: wrap — Sabse important property yahan
+  Bina wrap ke, agar 4 cards hain, toh sab ek line mein squeeze ho jaate. wrap se 48% width wale cards 2 ek line mein fit hote hain, baaki 2 neeche wali line mein jaate hain — 2x2 grid banta hai.
+*/
+
+.feature-card {
+  background-color: #f8fafc;
+  padding: 30px 24px;
+  border-radius: 8px;
+  width: 48%;
+  text-align: left;
+  border: 1px solid #e2e8f0;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+/*
+Code Breakdown:
+width: 48%;: Yeh card ko uski parent container ki 48% चौड़ाई deta hai.
+transition: transform 0.3s, box-shadow 0.3s;: Yeh property browser ko batati hai ki jab bhi is card par koi change ho, toh woh 0.3 seconds ke "smooth" animation mein ho.
+
+--- FULL EXPLANATION & LOGIC ---
+background-color: #f8fafc — Features section #ffffff hai, card #f8fafc kyun?
+  Card ko section background se visually alag dikhana hai. Subtle depth aati hai.
+
+width: 48% — 50% kyun nahi?
+  .features-grid mein gap: 25px hai. 48% + 48% = 96%, 4% remaining = gap ke liye natural space.
+
+transition: transform 0.3s, box-shadow 0.3s — Kyun DONO?
+  :hover par transform (upar uthna) aur box-shadow (deep shadow) DONO change hote hain. Dono ka 0.3s transition = SMOOTH hover effect.
+*/
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+translateY(-5px) — Card upar uthta hai — "lift" effect. User ko lagta hai card interactive hai.
+
+box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05) —
+  10px = shadow neeche.
+  rgba(0,0,0,0.05) = 5% black = BAHUT HALKI shadow — subtle depth.
+
+Kyun .feature-card par transition tha, :hover par nahi?
+  Transition STARTING STATE par likhte hain taaki smooth aana aur smooth jaana DONO ho sake.
+*/
+
+.feature-card h3 {
+  font-size: 20px;
+  color: #1e293b;
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* =========================================
+   [VIEWPORT ROW 4] DYNAMIC ESTIMATOR CALCULATOR WORKSPACE
+   =========================================
+*/
+.estimator-section {
+  background-color: #ffffff;
+  padding: 60px 10%;
+  text-align: center;
+  border-top: 1px solid #e2e8f0;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+border-top kyun? Features mein nahi tha.
+  Features (#ffffff) aur Estimator (#ffffff) — DONO same background. border-top: 1px solid #e2e8f0 ek subtle dividing line deta hai.
+*/
+
+.estimator-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: left;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+max-width: 600px — Kyun 600px specifically?
+  Calculator/form elements 600px se zyada wide hone par awkward lagte hain.
+
+margin: 0 auto — Kyun?
+  Auto margin horizontally CENTER kar deta hai — classic centering trick. Wrapper (block element) ko center karne ke liye margin: auto lagta hai.
+*/
+
+.estimator-section h2 {
+  font-size: 32px;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.estimator-section .sub-title {
+  font-size: 16px;
+  color: #64748b;
+  margin-bottom: 40px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 8px;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+label { display: block } — Kyun zaroori?
+  <label> by default "inline" element hai. display: block = nayi line par — label UPAR, input NEECHE.
+
+label font-weight: 600 — Input text se bold kyun?
+  Label = field ka naam — user ko clearly dikhna chahiye.
+*/
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #0f172a;
+  background-color: #ffffff;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+.form-group input, .form-group select — Dono ek saath kyun?
+  CSS mein comma = "Dono ko same rules do." Consistent form look.
+
+width: 100% — Kyun?
+  Input fields apne container ki poori width leni chahiye — easy to click.
+
+background-color: #ffffff — Wrapper #f8fafc hai, input #ffffff kyun?
+  Wrapper slightly grey hai — input field pure white = visually "sunken" effect.
+*/
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+:focus — Kab trigger hota hai?
+  Jab user input field par click kare. Yeh ACTIVE STATE hai.
+
+outline: none — Kyun?
+  Browser ek default ugly outline deta hai. Usse hatate hain, LEKIN tab hum khud ek better focus indicator dete hain (border + shadow).
+
+box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) — Kyun yeh unusual shadow?
+  0, 0, 0 = no X, no Y, no blur — yeh shadow nahi, RING hai! 3px spread = border ke bahar 3px ki blue glow ring. Professional focus indicator.
+*/
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 25px 0;
+}
+
+.checkbox-group input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.result-panel {
+  background-color: #eff6ff;
+  border: 1px dashed #bfdbfe;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
+.result-row.total-row {
+  border-top: 1px solid #bfdbfe;
+  padding-top: 10px;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1d4ed8;
+}
+
+/* =========================================
+  [VIEWPORT ROW 5] MONETIZATION MODEL PRICING AREA
+  ========================================
+*/
+.pricing {
+  background-color: #f8fafc;
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.pricing h2 {
+  font-size: 32px;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.pricing-subtitle {
+  font-size: 16px;
+  color: #64748b;
+  margin-bottom: 50px;
+}
+
+.pricing-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  width: 48%;
+  text-align: left;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+position: relative — Kyun yahan?
+  Pricing cards par aksar ek "POPULAR" ya "BEST VALUE" badge hota hai. Woh badge absolute position se aata hai. position: relative = card ek "positioning anchor" ban jaata hai taaki badge bahar na bhage.
+*/
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+}
+/*
+transform: translateY: Iska matlab hai element ko Vertical (upar ya neeche) axis par khiskana.
+-5px: Upar ki taraf 5px.
+*/
+
+.pricing-card.premium-pro {
+  border: 2px solid #2563eb;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+.pricing-card.premium-pro — Dot ke baad aur dot
+  Yeh "Chained Classes" hai. .premium-pro = ADDITIONAL override styles sirf premium card ke liye.
+
+border: 2px solid #2563eb — Regular card mein 1px tha, yahan 2px kyun?
+  Premium card = most recommended plan. Thicker blue border = "Yeh special hai" ka visual signal.
+*/
+
+.pricing-card h3 {
+  font-size: 22px;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+.pricing-card .price-tag {
+  font-size: 36px;
+  font-weight: bold;
+  color: #0f172a;
+  margin-bottom: 20px;
+}
+
+.pricing-card ul {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.pricing-card ul li {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.pricing-card ul li::before {
+  content: "✓";
+  color: #16a34a;
+  font-weight: bold;
+  margin-right: 10px;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+::before — Yeh kya hai?
+  CSS ka "Pseudo-element" — HTML mein koi extra element likhein bina CSS se content add karte hain element ke PEHLE.
+
+content: "✓"
+  Yahan ✓ (checkmark) use kiya — pricing list mein features confirm karne ka visual.
+
+color: #16a34a — Kyun green?
+  Green = "Yes", "Included". Clear visual separation.
+*/
+
+.pricing-btn {
+  display: block;
+  text-align: center;
+  background-color: #cbd5e1;
+  color: #1e293b;
+  padding: 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.pricing-card.premium-pro .pricing-btn {
+  background-color: #2563eb;
+  color: white;
+}
+
+.pricing-card.premium-pro .pricing-btn:hover {
+  background-color: #1d4ed8;
+}
+
+/*
+  =========================================
+  [VIEWPORT ROW 6] SITE SYSTEM PLATFORM GLOBAL FOOTER
+  =========================================
+*/
+footer {
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 60px 10% 30px 10%;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+background-color: #0f172a — Darkest color, kyun?
+  Footer = page ka end. Dark footer = visual "weight" — page neeche anchor hota hai. Poori site light hai — footer dark = clear "page khatam ho gaya" signal.
+
+padding: 60px 10% 30px 10% — 4 values kyun?
+  Top zyada (60px) bottom kam (30px) — content heavy top mein hai, copyright bottom mein.
+*/
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #1e293b;
+}
+/*
+--- FULL EXPLANATION & LOGIC ---
+align-items: flex-start — Header mein center tha, yahan flex-start kyun?
+  Footer mein Brand column zyada lamba hai aur Links chote. align-items: center karte toh air space aata. flex-start = sab columns TOP se shuru hon.
+
+border-bottom: 1px solid #1e293b
+  Footer background #0f172a hai, border #1e293b subtle divider hai.
+*/
+
+.footer-brand {
+  max-width: 35%;
+}
+
+.footer-brand .footer-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+.footer-links {
+  display: flex;
+  gap: 60px;
+}
+
+.footer-column h4 {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
+  color: #3b82f6;
+}
+
+.footer-bottom {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.footer-bottom-links a {
+  color: #64748b;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.footer-bottom-links a:hover {
+  color: #94a3b8;
+}
+
+/* =======================================================================================
+  🟢 CONDITIONAL MEDIA QUERY ENGINE (BREAKPOINT: 768px)
+  BUSINESS LOGIC: Enforces absolute grid optimization mechanics for mobile viewports.
+  =======================================================================================
+*/
+@media (max-width: 768px) {
+  /*
+  @media: Yeh CSS ko bolta hai ki "Main ab ek Condition (shart) laga raha hoon. Sirf tabhi ye rules apply karna jab ye shart puri ho."
+
+  (max-width: 768px): "Jab screen ki width 768px ya usse choti ho (jaise Mobile ya Tablet), tabhi iske andar wala code chalana." 768px = iPad/Tablet ki width hai. Is breakpoint ke neeche — tablet aur mobile.
+
+  Kyun SABSE LAST mein likha?
+  Desktop-first approach: pehle desktop CSS likhi, phir @media se mobile par OVERRIDE kiya. Agar pehle likhte media query, desktop CSS baad mein override kar deti.
+  */
+
+  header {
+    flex-direction: row; /* SYSTEM LOGIC: Logo aur Burger ko ek line mein rakhne ke liye row kiya */
+    justify-content: space-between;
+    padding: 20px;
+  }
+  /*
+  flex-direction: row;:
+  Mobile par bhi Logo aur Burger menu button ek hi seedhi line mein rahen.
+  */
+
+  .burger {
+    display: block;
+  }
+  /*
+  "Jo button laptop par chipa hua tha, use mobile screen par aate hi saamne le aao (block)."
+  */
+
+  nav {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f8fafc;
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    z-index: 1000;
+  }
+  /*
+  --- FULL EXPLANATION & LOGIC ---
+  position: absolute — Kyun yahan?
+    Mobile mein nav ek "floating dropdown" ban jaata hai — page ke flow se bahar niklta hai aur header ke neeche float karta hai. absolute = apne nearest relative PARENT (Header) ke relative position leta hai.
+
+  top: 100% — Kyun 100%?
+    "Header ke bilkul neeche se shuru ho."
+
+  z-index: 1000 — Kyun itna bada number?
+    Nav dropdown page ke SAARE elements ke UPAR dikhna chahiye.
+  */
+
+  /* SYSTEM LOGIC: JavaScript se active hone par menu display block hoga */
+  nav.active {
+    display: block;
+  }
+  /*
+  --- FULL EXPLANATION & LOGIC ---
+  nav.active kyun? .active class kahan se aata hai?
+    JavaScript se! Burger button click hone par JS yeh class add karta hai.
+  */
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  /*
+  --- FULL EXPLANATION & LOGIC ---
+  flex-direction: column — Desktop par row tha, mobile par column kyun?
+    Mobile: Screen narrow hai — side by side fit nahi hote. column = vertical stacking.
+  */
+
+  /* [ROW 2 RESPONSIVENESS] HERO MARKETING BANNER */
+  .hero {
+    flex-direction: column;
+    padding: 40px 5%;
+    text-align: center;
+    min-height: auto;
+  }
+  /*
+  --- FULL EXPLANATION & LOGIC ---
+  flex-direction: column — Desktop par row tha. Mobile mein column = text UPAR, image NEECHE.
+  min-height: auto — 80vh mobile par bahut tall ho jaata hai. auto = content ki height ke hisaab se khud decide karo.
+  */
+
+  .hero-content {
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-image {
+    max-width: 100%;
+  }
+
+  .image-placeholder {
+    height: 250px;
+  }
+
+  /* [ROW 3 RESPONSIVENESS] MODULAR FEATURES LIST */
+  .features {
+    padding: 50px 5%;
+  }
+
+  .features h2 {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+
+  .feature-card {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  /*
+  --- FULL EXPLANATION & LOGIC ---
+  width: 100% — Desktop par 48% tha.
+    Mobile screen par 48% width ke 2 cards side by side = too small. Each card should take full width (100%).
+  */
+
+  /* [ROW 4 RESPONSIVENESS] SYSTEM OPERATIONS ESTIMATOR */
+  .estimator-section {
+    padding: 50px 5%;
+  }
+
+  .estimator-wrapper {
+    padding: 25px 20px;
+  }
+
+  .estimator-section h2 {
+    font-size: 26px;
+  }
+
+  /* [ROW 5 RESPONSIVENESS] STRATEGIC SUBSCRIPTION CARDS */
+  .pricing {
+    padding: 50px 5%;
+  }
+
+  .pricing h2 {
+    font-size: 26px;
+  }
+
+  .pricing-subtitle {
+    margin-bottom: 30px;
+  }
+
+  .pricing-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .pricing-card {
+    width: 100%;
+  }
+  /*
+  --- FULL EXPLANATION & LOGIC ---
+  Desktop: flex row, 2 cards side by side (48% each)
+  Mobile: flex column, 1 card per row (100% each)
+  Responsive web design ka core pattern: "Side by side on desktop, stacked on mobile."
+  */
+
+  /* [ROW 6 RESPONSIVENESS] SITE PLATFORM SYSTEM FOOTER */
+  footer {
+    padding: 40px 5% 20px 5%;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 35px;
+    text-align: center;
+  }
+  /*
+  --- FULL EXPLANATION & LOGIC ---
+  .footer-container flex-direction: column —
+    Mobile: Brand UPAR, Links NEECHE — stacked. Center alignment = balanced, clean mobile footer.
+  */
+
+  .footer-brand {
+    max-width: 100%;
+  }
+
+  .footer-links {
+    width: 100%;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  /*
+  --- FULL EXPLANATION & LOGIC ---
+  justify-content: space-around — Desktop par gap: 60px tha.
+    Mobile mein space-around = har column ke chaaron taraf equal space distribute karo.
+  */
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    padding-top: 20px;
+  }
+  /*
+  --- FULL EXPLANATION & LOGIC ---
+  .footer-bottom — Desktop mein copyright left, links right tha.
+    Mobile mein: copyright UPAR, links NEECHE — column mein stack.
+  */
+
+  .footer-bottom-links a {
+    margin: 0 10px;
+  }
+}

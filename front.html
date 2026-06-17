@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Vaypari: The one-stop digital infrastructure for small businesses and freelancers."
+    />
+
+    <title>Vaypari - Comprehensive Business & Digital Solutions</title>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="logo192.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Vaypari - Managed Business & Custom Web SaaS"
+    />
+    <meta
+      property="og:description"
+      content="The ultimate all-in-one suite providing smart invoicing, operation management, and custom business websites."
+    />
+    <meta
+      property="og:image"
+      content="https://www.vaypari.com/assets/preview-banner.png"
+    />
+    <meta property="og:url" content="https://www.vaypari.com" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Vaypari - Professional Invoicing & Digital Agency"
+    />
+    <meta
+      name="twitter:description"
+      content="The modern standard for automated billing systems and end-to-end client web deployments."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.vaypari.com/assets/preview-banner.png"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <!-- ======================================================================================================================= -->
+  <body>
+    <header>
+      <a href="#" class="logo">Vaypari</a>
+
+      <!--
+      <a> (Anchor Tag): Yeh ek link banane ke liye use hota hai. Iske bina tum ek page se dusre page par click karke nahi ja sakte.
+       href="#" (Hypertext Reference): Yeh batata hai ki link click karne par kahan jana hai. # ka matlab hai ki abhi ke liye yeh link kahi nahi ja raha (placeholder), sirf button jaisa kaam kar raha hai.
+       class="logo": Yeh ek naam (label) hai jo is element ko diya gaya hai. Iska use karke tum CSS file mein iska design (jaise font, color, size) set kar sakte ho.
+
+      -->
+
+      <button class="burger" id="burger">☰</button>
+      <!--
+      <button>: Yeh HTML element ek clickable button banata hai.
+       class="burger": Yeh CSS ke liye ek label hai, taaki tum is button ko style (design) de sako, jaise ki iska size, color ya position set karna.
+        id="burger": Yeh is button ki ek unique ID hai. Iska use JavaScript mein hota hai taaki jab user is button par click kare, toh tumhara menu khul ya band ho sake.
+        ☰: Yeh ek "hamburger menu icon" ka character hai jo user ko dikhta hai.
+
+        Yeh kyu lagte hain?
+        Yeh button mobile screens par navigation menu ko open/close karne ke liye use hota hai. Jab tumhari screen choti ho jaati hai, toh saare links ko chupakar sirf yeh button dikhaya jata hai, jise click karte hi menu khul jata hai.
+        -->
+      <nav id="nav-menu">
+        <!--
+        <nav>: Iska matlab hota hai "Navigation". Browser aur search engines (jaise Google) ko ye batata hai ki iske andar website ke main navigation links (jaise Home, About, Contact) hain.
+        id="nav-menu": Yeh is poore section ki ek unique ID hai. Isse tum CSS mein is poore menu box ki position (jaise menu upar ya side mein dikhe) aur design fix kar sakte ho.
+        -->
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-button">
+        <!--
+        <div>: Yeh ek "division" ya "container" hota hai. Iska apna koi visual effect nahi hota, yeh sirf dusre elements (jaise buttons) ko ek group mein rakhne ke liye use hota hai.
+        -->
+
+        <a href="#" class="cta-btn">Login / Register</a>
+      </div>
+    </header>
+
+    <!--
+    1. <span> (Ek word ya sentence jaisa)
+    Tumne ek line likhi: "Rahul ek smart ladka hai."
+    Yahan tumne 'smart' ko alag dikhane ke liye use highlight (ya bold) kiya.
+
+    Matlab: Poori line nahi badli, bas ek chote se hisse (word) par focus kiya.
+
+    2. <div> (Ek page ya paragraph ka box)
+    Tumne notebook ka ek poora page liya aur uske andar apna content likha.
+
+    Matlab: Yeh ek bada container hai jisme tumne bahut saari cheezein (text, images, links) bhar di hain. Iska apna koi khaas matlab nahi hota, yeh bas cheezon ko ek saath pakde rakhne ka kaam karta hai.
+
+    3. <section> (Chapter ya Topic)
+    Ab tumne apni notebook mein ek naya chapter shuru kiya (jaise: 'Maths Chapter 1').
+
+    Matlab: Yeh sirf ek container nahi hai, balki yeh ek alag topic hai. Jab tum browser (Google) ko batate ho ki <section>, toh tum keh rahe ho ki "bhai, yahan se mera naya topic shuru ho raha hai."
+
+    -->
+    <section class="hero">
+      <!--
+        <section>: Yeh ek semantic HTML tag hai jo web page ke ek bade hisse (block) ko define karta hai. Yeh batata hai ki page ka yeh specific part ek alag topic ya content group hai.
+        -->
+
+      <div class="hero-content">
+        <h1>The All-In-One Platform for <span>Vaypari.</span></h1>
+        <p>
+          Launch your custom business website, generate professional GST
+          invoices, track corporate expenses, and manage inventory seamlessly.
+          The complete digital and operational ecosystem built exclusively for
+          Indian enterprise scales and fast-growing freelancers.
+        </p>
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary">Start Free Trial</a>
+          <a href="#" class="btn-secondary">Watch Demo</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="image-placeholder">
+          [ Vaypari App Dashboard Screenshot ]
+        </div>
+      </div>
+    </section>
+    <section class="features" id="features">
+      <h2>Empower Your Business Architecture</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Easy Invoicing</h3>
+          <p>
+            Generate, GST-compliant invoices in under a minute and share them
+            instantly with your clients via email or WhatsApp.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Expense Tracking</h3>
+          <p>
+            Monitor your daily business expenses, scan receipts, and generate
+            accurate financial reports to maximize tax deductions.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Inventory Management</h3>
+          <p>
+            Keep a real-time track of your stock levels, receive automated
+            low-stock alerts, and manage product variants seamlessly.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Custom Client Websites</h3>
+          <p>
+            Get your own fully managed business website hosted by Vaypari. We
+            handle your complete digital footprint, custom domains, and
+            corporate workflows end-to-end.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="estimator-section" id="estimator">
+      <h2>Instant Operations Estimator</h2>
+      <p class="sub-title">
+        Test our core logic. Estimate your billing and custom website setup
+        instantly.
+      </p>
+
+      <div class="estimator-wrapper">
+        <div class="form-group">
+          <!--
+            <input> (Dabba): Yeh woh "Input Box" hai jisme user apna data (number, naam, email) type karta hai.
+            <label> (Nishan): Yeh ek "Label" hai. Jaise kisi dabba par sticker chipka hota hai ki usme kya hai (jaise "Cheeni" ya "Namak"), waise hi HTML mein <label> batata hai ki uske paas wala box kis cheez ka hai.
+            <label> sirf batata hai ki kya bharna hai, aur <input> woh jagah hai jahan bharna hai. for aur id in dono ko jod kar ek team bana dete hain.
+
+            -->
+          <label for="itemPrice">Invoice Item Amount (₹):</label>
+          <input
+            type="number"
+            id="itemPrice"
+            value="10000"
+            placeholder="Enter service/product cost"
+          />
+        </div>
+
+        <!--
+        HTML mein class aur type dono ka kaam bilkul alag hai. Inhe aise samjho:
+
+            1. class (Design aur Decoration ke liye)
+            class ka istemal CSS (styling) ke liye hota hai. Yeh ek tarah ka "Name Tag" hai jo tum kisi bhi element ko de sakte ho taaki tum use baad mein design de sako.
+            Definition: Ek naam jo tum khud rakhte ho taaki CSS mein us element ko pehchan kar design kar sako.
+            Kaam: Styling (Color, Size, Font, Margin).
+            Example: <div class="main-box">. Yahan main-box tumne naam rakha hai taaki CSS mein tum likh sako: "Hey, main-box waale div ka background red kar do."
+            ----------------------------------------------------------------------------------------------------------------------------------------------------------
+            2. type (Behavior aur Function ke liye)
+            type ka istemal input tags ke saath hota hai. Yeh browser ko batata hai ki us box ke andar kis tarah ka data bharna hai.
+            Definition: Yeh browser ko batata hai ki user kya entry karega.
+            Kaam: Browser ka behavior badalna (Numbers ke liye keypad dikhana, password ke liye dot dikhana).
+            Example: <input type="number">. Yahan type="number" browser ko batata hai ki is box mein sirf numbers aane chahiye.
+        -->
+
+        <div class="form-group">
+          <label for="gstRate">GST Slab Rate (%):</label>
+          <select id="gstRate">
+            <option value="18">18% (Standard Service)</option>
+            <option value="12">12%</option>
+            <option value="5">5%</option>
+            <option value="0">0% (Exempted)</option>
+          </select>
+        </div>
+        <!--
+    type="checkbox": Isse screen par ek chota box banta hai jisme user tick (✅) laga sakta hai.
+    id="includeWebsite": Yeh is checkbox ki Unique ID hai. Iska use JavaScript mein yeh check karne ke liye hota hai ki "kya user ne is box ko tick kiya hai ya nahi?".
+    checked: Yeh ek special command hai. Iska matlab hai ki jab page pehli baar load hoga, toh yeh box pehle se hi tick (selected) dikhega. Agar tum checked hata doge, toh box khaali dikhega.
+    -->
+        <div class="checkbox-group">
+          <input type="checkbox" id="includeWebsite" checked />
+          <label for="includeWebsite"
+            >Add Custom Business Website Deployment Service (+ ₹5,000 one-time
+            setup)</label
+          >
+        </div>
+
+        <div class="result-panel">
+          <div class="result-row">
+            <span>Calculated GST Tax Amount:</span>
+            <span id="taxResult">₹1,800.00</span>
+          </div>
+          <div class="result-row">
+            <span>Website Agency Setup Fee:</span>
+            <span id="webResult">₹5,000.00</span>
+          </div>
+          <div class="result-row total-row">
+            <span>Estimated Grand Total Invoice:</span>
+            <span id="grandTotalResult">₹16,800.00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pricing" id="pricing">
+      <h2>Simple, Transparent Pricing</h2>
+      <p class="pricing-subtitle">
+        Choose the plan that fits your business scale. No hidden compliance
+        fees.
+      </p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Free Plan</h3>
+          <div class="price-tag">
+            ₹0
+            <span style="font-size: 14px; font-weight: normal; color: #64748b"
+              >/ lifetime</span
+            >
+          </div>
+          <ul>
+            <li>Up to 5 GST Invoices / month</li>
+            <li>Basic Expense Tracking</li>
+            <li>Single User Access</li>
+          </ul>
+          <a href="#" class="pricing-btn">Get Started</a>
+        </div>
+        <div class="pricing-card premium-pro">
+          <h3>Premium Pro</h3>
+          <div class="price-tag">
+            ₹499
+            <span style="font-size: 14px; font-weight: normal; color: #64748b"
+              >/ month</span
+            >
+          </div>
+          <ul>
+            <li>Unlimited GST Invoices</li>
+            <li>Advanced Expense & Tax Reports</li>
+            <li>Real-time Inventory Warehouse Alert</li>
+            <li>WhatsApp & Email Client Share Link</li>
+            <li>Priority 24/7 Support Desk Hook</li>
+          </ul>
+          <a href="#" class="pricing-btn">Go Premium Pro</a>
+        </div>
+      </div>
+    </section>
+    <section
+      id="contact"
+      style="
+        padding: 60px 10%;
+        background-color: #ffffff;
+        text-align: center;
+        border-top: 1px solid #e2e8f0;
+      "
+    >
+      <h2>Get In Touch With Us</h2>
+      <p style="color: #64748b; margin-bottom: 30px">
+        Have questions about Vaypari? Drop your details below, and our team will
+        email you back instantly.
+      </p>
+      <!--
+      <form> tag hai, jo user se data lene (jaise contact form) ke liye use hota Iske andar hi tumhare label, input, aur button aate hain.
+      action="https://formspree.io/...": Yeh sabse zaroori hai. Jab user "Submit" button dabayega, toh data kahan bhejna hai, yeh link wahi batata hai. Formspree ek service hai jo bina kisi back-end programming (node.js, php) ke tumhara form chalane mein madad karti hai.
+        method="POST": Yeh method batata hai ki data kaise bhejna hai. POST ka matlab hai "data ko secure tarike se server par bhejo".
+-->
+      <form
+        action="https://formspree.io/f/YOUR_UNIQUE_ID_HERE"
+        method="POST"
+        style="
+          max-width: 500px;
+          margin: 0 auto;
+          text-align: left;
+          background: #f8fafc;
+          padding: 30px;
+          border: 1px solid #e2e8f0;
+          border-radius: 12px;
+        "
+      >
+        <!--
+
+      required: Yeh ek "must" command hai. Agar user bina kuch likhe "Submit" button dabayega, toh browser khud hi warning de dega ki "Please fill out this field".
+      type="text": Yeh browser ko batata hai ki is box mein user kuch bhi type kar sakta hai (naam, address, etc.), kyunki yeh plain text hai.
+      id="clientName": Yeh box ki Unique ID hai. Iska use CSS mein design karne ke liye ya JavaScript mein data uthane ke liye hota hai. (Yeh tumhare <label> ke for attribute se match hona chahiye).
+        name="name": Yeh bahut zaroori hai. Jab tum form submit karte ho, toh server (ya Formspree) isi name ka use karke pehchanta hai ki ye data kya hai. (Example: name: Rahul).
+      -->
+        <div class="form-group">
+          <label for="clientName">Your Full Name:</label>
+          <input
+            type="text"
+            id="clientName"
+            name="name"
+            required
+            placeholder="Enter your name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="clientEmail">Your Business Email:</label>
+          <input
+            type="email"
+            id="clientEmail"
+            name="_replyto"
+            required
+            placeholder="name@company.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="clientMessage"
+            >How can Vaypari help your business?:</label
+          >
+
+          <!--
+            <textarea>: Yeh tag form mein ek bada, multi-line text box banata hai.
+            id="clientMessage": Yeh is box ki unique identity hai (CSS ya JavaScript ke liye).name="message": Jab form submit hoga, toh server ya Formspree par yeh data message naam se jayega.
+            rows="5": Yeh box ki height (unichai) taiyar karta hai. rows="5" ka matlab hai ki yeh box shuruat mein 5 lines jitna bada dikhega.
+            required: Iska matlab hai ki user is box ko bina bhare form submit nahi kar sakta.
+            placeholder="...": Box ke andar ka halka text jo batata hai ki kya likhna hai.
+          -->
+          <textarea
+            id="clientMessage"
+            name="message"
+            rows="5"
+            required
+            placeholder="Write your requirements here..."
+            style="
+              width: 100%;
+              padding: 12px;
+              border: 1px solid #cbd5e1;
+              border-radius: 6px;
+              font-family: inherit;
+              font-size: 15px;
+              resize: vertical;
+            "
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="btn-primary"
+          style="width: 100%; border: none; cursor: pointer; margin-top: 10px"
+        >
+          Send Message
+        </button>
+      </form>
+    </section>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo">Vaypari.</a>
+          <p>
+            The ultimate one-stop business infrastructure and digital deployment
+            platform engineered to launch, manage, and scale Indian enterprises
+            effortlessly.
+          </p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Support</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <!--
+        &copy;: Yeh ek "Special Character" hai. Browser isse padh kar screen par © ka symbol dikhata hai.
+        jaise &reg; registered ke liye
+        -->
+        <p>&copy; 2026 Vaypari. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
